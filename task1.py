@@ -2,15 +2,21 @@
 #шестнадцатеричное строковое представление.Функцию hex используйте для
 #проверки своего результата.
 
-num = int(input("Введите целое число: "))
+HEX_ALPHA = '0123456789ABCDEF'
+BASE = 16
 
-hex_num = hex(num)
+number = int(input("Введите целое число: "))
+original = number
 
-print(f'Шестнадцатеричное представление: {hex_num}')
+result = ''
+while number > 0:
+    result = HEX_ALPHA[number % BASE] + result
+    number //= BASE
 
-check_hex = hex(num)
+print(f'Число {original} в {BASE}-чной системе будет {result.lower()}')
+print(f'hex({original}) = {hex(original)[2:]}')
 
-if hex_num == check_hex:
-    print("Результаты совпадают")
+if result.lower() == hex(original)[2:]:
+    print('Результаты совпадают!!!')
 else:
-    print("Результаты не совпадают")
+    print('Ошибка...')
